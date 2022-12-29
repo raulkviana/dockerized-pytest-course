@@ -49,6 +49,16 @@ def test_add_invalid_activity(create_tracker, create_overlapping_times):
  pytest --cov scripts
 """
 
+def test_delete_activity(create_tracker):
+    # Obtain activities from tracker
+    fitnees_tracker = create_tracker
+    activities = fitnees_tracker.get_activities()
 
-def test_function():  # change function name here
-    pass
+    # Delete activity
+    fitnees_tracker.delete_activity(activities[0][0], activities[0][1], activities[0][2])
+
+    assert len(fitnees_tracker.get_activities()) == 0
+
+
+
+    
